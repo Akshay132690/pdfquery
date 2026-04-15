@@ -43,9 +43,9 @@ query = st.text_input("Ask a question from the document:")
 
 # --- Answer Logic ---
 if query:
-    docs = retriever.get_relevant_documents(query)
+    retrieved_docs = retriever.invoke(prompt)
 
-    context = "\n".join([doc.page_content for doc in docs])
+    context = "\n".join([doc.page_content for doc in retrieved_docs])
 
     prompt = f"""
 Answer ONLY from the context below.
